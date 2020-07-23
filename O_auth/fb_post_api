@@ -1,0 +1,733 @@
+{
+    "swagger": "2.0",
+    "host": "127.0.0.1:8000",
+    "basePath": "/api/",
+    "info": {
+        "version": "1.0.0",
+        "title": "Simple Facebook API",
+        "description": "A simple API to learn how to write OpenAPI Specification"
+    },
+    "schemes": [
+        "https",
+        "http"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "securityDefinitions": {
+        "oauth": {
+            "tokenUrl": "http://auth.ibtspl.com/oauth2/",
+            "flow": "password",
+            "scopes": {
+                "read": "read users",
+                "write": "create users",
+                "update": "update users",
+                "delete": "delete users",
+                "superuser": "super user permission"
+            },
+            "type": "oauth2"
+        }
+    },
+    "definitions": {
+        "ContentToPostAndComment": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "contet"
+            ]
+        },
+        "ReactionTypeToPostAndComment": {
+            "type": "object",
+            "properties": {
+                "reaction_type": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "reaction_type"
+            ]
+        },
+        "ContentToReply": {
+            "allOf": [{
+                    "$ref": "#/definitions/ContentToPostAndComment"
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "parent_comment_id": {
+                            "type": "integer"
+                        }
+                    },
+                    "required": [
+                        "parent_comment_id"
+                    ]
+                }
+            ]
+        },
+        "User": {
+            "type": "object",
+            "properties": {
+                "user_id": {
+                    "type": "integer",
+                },
+                "name": {
+                    "type": "string"
+                },
+                "profile_pic": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "user_id",
+                "name",
+                "profile_pic"
+            ]
+        },
+        "UserWithReaction": {
+            "allOf": [{
+                    "$ref": "#/definitions/User"
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "reaction": {
+                            "type": "string",
+                            "enum": [
+                                "HAHA",
+                                "WOW",
+                                "LIT",
+                                "THUMBS-UP",
+                                "THUMBS-DOWN",
+                                "ANGRY",
+                                "SAD"
+                            ]
+                        }
+                    },
+                    "required": [
+                        "reaction"
+                    ]
+                }
+            ]
+        },
+        "ReplyDetails": {
+            "type": "object",
+            "properties": {
+                "comment_id": {
+                    "type": "integer"
+                },
+                "commenter": {
+                    "$ref": "#/definitions/User"
+                },
+                "commented_at": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "comment_content": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "comment_id",
+                "commenter",
+                "commented_at",
+                "comment_content"
+            ]
+
+        },
+        "ReactionsDetails": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "type": "integer"
+                },
+                "type": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "count",
+                "type"
+            ]
+        },
+        "GetCommentDetails": {
+            "allOf": [{
+                    "$ref": "#/definitions/ReplyDetails"
+                },
+                "type": "object",
+                "properties": {
+                    "reactions": {
+                        "$ref": "#/definitions/ReactionsDetails"
+                    }
+                },
+                "required": [
+                    "reactions"
+                ]
+            ]
+        },
+        "GetCompleteCommentDetails": {
+            "allOf": [{
+                    "$ref": "#/definitions/GetCommentDetails"
+                },
+                "type": "object",
+                "properties": {
+                    "replies_count": {
+                        "type": "integer"
+                    },
+                    "replies": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/definitions/GetCommentDetails"
+                        }
+                    }
+                }
+            ]
+        },
+        "GetOnlyPostResponse": {
+            "type": "object",
+            "properties": {
+                "post_id": {
+                    "type": "integer"
+                },
+                "posted_by": {
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                            "type": "string"
+                        },
+                        "user_id": {
+                            "type": "integer"
+                        },
+                        "profile_pic": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "posted_at": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "post_content": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "post_id",
+                "posted_by",
+                "posted_at",
+                "post_content"
+            ]
+        },
+        "GetCompleteDetailsOfPost": {
+            "allOf": [{
+                    "$ref": "#/definitions/GetOnlyPostResponse"
+                },
+                "type": "object",
+                "properties": {
+                    "comments": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/definitions/GetCompleteCommentDetails"
+                        }
+                    },
+                    "comments_count": {
+                        "type": "integer"
+                    }
+                },
+                "required": [
+                    "comments",
+                    "comments_count"
+                ]
+            ]
+        }
+    },
+    "parameters": {
+        "ContentToPostAndComment": {
+            "name": "content",
+            "in": "body",
+            "required": true,
+            "description": "The content has to insert.",
+            "schema": {
+                "$ref": "#/definitions/ContentToPostAndComment"
+            }
+        },
+        "ReactionTypeToPostAndComment": {
+            "name": "ReactionType",
+            "in": "body",
+            "required": true,
+            "description": "The reaction_type to react.",
+            "schema": {
+                "$ref": "#/definitions/ReactionTypeToPostAndComment"
+            }
+        },
+        "PostIdPathParameter": {
+            "name": "post_id",
+            "in": "path",
+            "required": true,
+            "description": "The Post id",
+            "type": "integer"
+        },
+        "CommentIdPathParameter": {
+            "name": "comment_id",
+            "in": "path",
+            "required": true,
+            "description": "The Comment id",
+            "type": "integer"
+        }
+    },
+    "responses": {},
+    "paths": {
+        "/fb_post/post/v1/": {
+            "post": {
+                "security": [{
+                    "oauth": [
+                        "superuser"
+                    ]
+                }],
+                "operationId": "create_post",
+                "parameters": [{
+                    "$ref": "#/parameters/ContentToPostAndComment"
+                }],
+                "responses": {
+                    "201": {
+                        "description": "Success Response",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "post_id": {
+                                    "type": "integer"
+                                }
+                            },
+                            "required": [
+                                "post_id"
+                            ]
+                        }
+                    },
+                    "404": {
+                        "description": "User Not found"
+                    },
+                    "400": {
+                        "description": "Inavlid parameter to input"
+                    }
+                }
+            }
+        },
+        "/fb_post/post/{post_id}/react/v1/": {
+            "post": {
+                "security": [{
+                    "oauth": [
+                        "superuser"
+                    ]
+                }],
+                "operationId": "react_to_post",
+                "parameters": [{
+                        "$ref": "#/parameters/PostIdPathParameter"
+                    },
+                    {
+                        "$ref": "#/parameters/ReactionTypeToPostAndComment"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    },
+                    "404": {
+                        "description": "User or Post Not found"
+                    },
+                    "400": {
+                        "description": "Inavlid parameter to input"
+                    }
+                }
+            }
+        },
+        "/fb_post/comment/{comment_id}/react/v1/": {
+            "post": {
+                "security": [{
+                    "oauth": [
+                        "superuser"
+                    ]
+                }],
+                "operationId": "react_to_comment",
+                "parameters": [{
+                        "$ref": "#/parameters/CommentIdPathParameter"
+                    },
+                    {
+                        "$ref": "#/parameters/ReactionTypeToPostAndComment"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    },
+                    "404": {
+                        "description": "User or Comment Not found"
+                    },
+                    "400": {
+                        "description": "Inavlid parameter to input"
+                    }
+                }
+            }
+        },
+        "/fb_post/post/{post_id}/comment/v1/": {
+            "post": {
+                "security": [{
+                    "oauth": [
+                        "superuser"
+                    ]
+                }],
+                "operationId": "create_comment",
+                "parameters": [{
+                        "$ref": "#/parameters/PostIdPathParameter"
+                    },
+                    {
+                        "$ref": "#/parameters/ContentToPostAndComment"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Success Response",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "comment_id": {
+                                    "type": "integer"
+                                }
+                            },
+                            "required": [
+                                "comment_id"
+                            ]
+                        }
+                    },
+                    "404": {
+                        "description": "User or Post Not found"
+                    },
+                    "400": {
+                        "description": "Inavlid parameter to input"
+                    }
+                }
+            }
+        },
+        "/fb_post/comment/{comment_id}/reply/v1/": {
+            "post": {
+                "security": [{
+                    "oauth": [
+                        "superuser"
+                    ]
+                }],
+                "operationId": "create_reply_to_comment",
+                "parameters": [{
+                        "$ref": "#/parameters/CommentIdPathParameter"
+                    },
+                    {
+                        "$ref": "#/parameters/ContentToPostAndComment"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Success Response",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "reply_id": {
+                                    "type": "integer"
+                                }
+                            },
+                            "required": [
+                                "reply_id"
+                            ]
+                        }
+                    },
+                    "404": {
+                        "description": "User or Comment Not found"
+                    },
+                    "400": {
+                        "description": "Inavlid parameter to input"
+                    }
+                }
+            }
+        },
+        "/fb_post/post/{post_id}/v1/": {
+            "delete": {
+                "security": [{
+                    "oauth": [
+                        "superuser"
+                    ]
+                }],
+                "operationId": "delete_post",
+                "parameters": [{
+                    "$ref": "#/parameters/PostIdPathParameter"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Successful deletion"
+                    },
+                    "404": {
+                        "description": "User or Post Not found"
+                    },
+                    "400": {
+                        "description": "Inavlid parameter to input"
+                    },
+                    "403": {
+                        "description": "User cannot delete post"
+                    }
+                }
+            }
+        },
+        "/fb_post/reactions/total_count/v1/": {
+            "get": {
+                "security": [{
+                    "oauth": [
+                        "superuser"
+                    ]
+                }],
+                "operationId": "get_total_reactions_count",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Total Reactions count",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "count": {
+                                    "type": "integer"
+                                }
+                            },
+                            "required": [
+                                "count"
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/fb_post/post/reacted_posts/v1/": {
+            "get": {
+                "security": [{
+                    "oauth": [
+                        "superuser"
+                    ]
+                }],
+                "operationId": "get_reacted_posts",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Posts that reacted by user",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "integer"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/fb_post/posts/more_positive_reactions/v1/": {
+            "get": {
+                "security": [{
+                    "oauth": [
+                        "superuser"
+                    ]
+                }],
+                "operationId": "get_posts_with_more_postive_reactions",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Posts having more positive reactions",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "integer"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/fb_post/post/{post_id}/reactions/v1/": {
+            "get": {
+                "security": [{
+                    "oauth": [
+                        "superuser"
+                    ]
+                }],
+                "operationId": "get_post_reactions",
+                "parameters": [{
+                    "$ref": "#/parameters/PostIdPathParameter"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "List of user reactions",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/UserWithReaction"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Inavlid post_id"
+                    },
+                    "404": {
+                        "description": "Post not found"
+                    }
+                }
+            }
+        },
+        "/fb_post/post/{post_id}/reactions/metrics/v1/": {
+            "get": {
+                "security": [{
+                    "oauth": [
+                        "superuser"
+                    ]
+                }],
+                "operationId": "get_post_reaction_metrics",
+                "parameters": [{
+                    "$ref": "#/parameters/PostIdPathParameter"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Metrics of a user post",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "reaction": {
+                                        "type": "string",
+                                        "enum": [
+                                            "HAHA",
+                                            "WOW",
+                                            "LIT",
+                                            "THUMBS-UP",
+                                            "THUMBS-DOWN",
+                                            "ANGRY",
+                                            "SAD"
+                                        ]
+                                    },
+                                    "count": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Inavlid post_id"
+                    },
+                    "404": {
+                        "description": "Post not found"
+                    }
+                }
+            }
+        },
+        "/fb_post/comment/{comment_id}/replies/v1/": {
+            "get": {
+                "security": [{
+                    "oauth": [
+                        "superuser"
+                    ]
+                }],
+                "operationId": "get_replies_of_a_comment",
+                "parameters": [{
+                    "$ref": "#/parameters/CommentIdPathParameter"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "List of replies of a comment",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/ReplyDetails"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Inavlid comment_id"
+                    },
+                    "404": {
+                        "description": "Comment not found"
+                    }
+                }
+            }
+        },
+        "/fb_post/post/{post_id}/details/v1/": {
+            "get": {
+                "security": [{
+                    "oauth": [
+                        "superuser"
+                    ]
+                }],
+                "operationId": "get_post_details",
+                "parameters": [{
+                    "$ref": "#/parameters/PostIdPathParameter"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Complete details of a user post",
+                        "schema": {
+                            "$ref": "#/definitions/GetCompleteDetailsOfPost"
+                        }
+                    },
+                    "400": {
+                        "description": "Inavlid comment_id"
+                    },
+                    "404": {
+                        "description": "Comment not found"
+                    }
+                }
+            }
+        },
+        "/fb_post/posts/details/v1/": {
+            "get": {
+                "security": [{
+                    "oauth": [
+                        "superuser"
+                    ]
+                }],
+                "operationId": "get_posts_details",
+                "parameters": [{
+                        "name": "offset",
+                        "in": "query",
+                        "description": "Enter offset to get start from that post",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Enter limit value for number posts",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Complete details of a user post",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "total_posts": {
+                                    "type": "integer"
+                                },
+                                "posts": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/GetCompleteDetailsOfPost"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,15 @@
+../fastdiff/__init__.py
+../fastdiff/__pycache__/__init__.cpython-36.pyc
+../fastdiff/__pycache__/_base.cpython-36.pyc
+../fastdiff/__pycache__/_native.cpython-36.pyc
+../fastdiff/__pycache__/compare.cpython-36.pyc
+../fastdiff/_base.py
+../fastdiff/_native.py
+../fastdiff/compare.py
+../fastdiff/fastdiff.wasm
+PKG-INFO
+SOURCES.txt
+dependency_links.txt
+not-zip-safe
+requires.txt
+top_level.txt

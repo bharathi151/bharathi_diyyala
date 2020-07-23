@@ -1,0 +1,112 @@
+{
+    "swagger": "2.0",
+    "host": "127.0.0.1:8000",
+    "basePath": "/api/",
+    "info": {
+        "version": "1.0.0",
+        "title": "Simple API",
+        "description": "A simple API to learn how to write OpenAPI Specification"
+    },
+    "schemes": [
+        "https",
+        "http"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "securityDefinitions": {
+        "oauth": {
+            "tokenUrl": "http://auth.ibtspl.com/oauth2/",
+            "flow": "password",
+            "scopes": {
+                "read": "read users",
+                "write": "create users",
+                "update": "update users",
+                "delete": "delete users",
+                "superuser": "super user permission"
+            },
+            "type": "oauth2"
+        }
+    },
+    "definitions": {
+        "User": {
+            "type": "object",
+            "properties": {
+                "firstName": {
+                    "type": "string"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                },
+                "age": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            },
+            "required": [
+                "firstName",
+                "lastName",
+                "username",
+                "age"
+            ]
+        },
+        "UserWithExtraFields": {
+            "allOf": [{
+                    "$ref": "#/definitions/User"
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "createdOn": {
+                            "type": "string",
+                            "format": "datetime"
+                        },
+                        "userId": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "createdOn",
+                        "userId"
+                    ]
+                }
+            ]
+        }
+    },
+    "parameters": {},
+    "responses": {},
+    "paths": {
+        "/person/{username}/delete/": {
+            "delete": {
+                "operationId": "update_person",
+                "parameters": [{
+                    "name": "username",
+                    "in": "path",
+                    "required": true,
+                    "description": "The person's username",
+                    "type": "string"
+                }, ],
+                "responses": {
+                    "202": {
+                        "description": "Success Response",
+                    }
+                }
+            }
+        }
+    }
+}
+                        "enum": [
+                            "HAHA",
+                            "WOW",
+                            "LIT",
+                            "THUMBS-UP",
+                            "THUMBS-DOWN",
+                            "ANGRY",
+                            "SAD"
+                        ]

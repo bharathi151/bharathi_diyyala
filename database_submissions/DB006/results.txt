@@ -1,0 +1,16 @@
+Tests ran at 02 Mar 12 05 PM
+
+10 tests passed out of 12 tests.
+
+test_db006.py::test_q1: passed
+test_db006.py::test_q2: passed
+test_db006.py::test_q3: passed
+test_db006.py::test_q4: passed
+test_db006.py::test_q5: passed
+test_db006.py::test_q6: passed
+test_db006.py::test_q7: passed
+test_db006.py::test_q8: passed
+test_db006.py::test_q9: passed
+test_db006.py::test_q10: passed
+test_db006.py::test_q11: failed
+test_db006.py::test_q12: failed

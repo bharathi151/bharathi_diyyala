@@ -1,0 +1,8 @@
+************* Module store
+store.py:127: [C0305(trailing-newlines), ] Trailing newlines
+store.py:46: [W0622(redefined-builtin), Store.__init__] Redefining built-in 'list'
+store.py:66: [W2207(max-for-block-size), Store.filter] Too many statements in for block (8/4)
+
+-------------------------------------------------------------------
+Your code has been rated at 9.67/10 (previous run: 10.00/10, -0.33)
+

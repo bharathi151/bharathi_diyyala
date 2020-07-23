@@ -1,0 +1,19 @@
+Tests ran at _27_Feb_11_39_AM
+
+15 tests passed out of 15 tests.
+
+test_db001.py::test_user_table_creation_whether_columns_exists: passed
+test_db001.py::test_user_table_raises_error_when_first_name_is_null: passed
+test_db001.py::test_user_table_raises_error_when_last_name_is_null: passed
+test_db001.py::test_user_table_raises_error_when_phone_number_is_null: passed
+test_db001.py::test_post_table_creation: passed
+test_db001.py::test_post_table_raise_error_when_assign_wrong_foreign_key: passed
+test_db001.py::test_post_table_for_auto_increment: passed
+test_db001.py::test_user_creation_q3: passed
+test_db001.py::test_user_creation_q4: passed
+test_db001.py::test_post_creation_q5: passed
+test_db001.py::test_get_all_coulmns_user_table: passed
+test_db001.py::test_get_first_and_last_coulmns_user_table: passed
+test_db001.py::test_update_tony_name: passed
+test_db001.py::test_delete_john_wick: passed
+test_db001.py::test_delete_post_table: passed

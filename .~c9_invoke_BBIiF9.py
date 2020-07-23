@@ -1,0 +1,6 @@
+Q1="CREATE TABLE User (user_id integer PRIMARY KEY, first_name TEXT(200) NOT NULL,last_name TEXT(200) NOT NULL,address TEXT(300) NOT NULL,phone_number integer NOT NULL);"
+Q2="CREATE TABLE Post (user_id,post_id INTEGER PRIMARY KEY AUTOINCREMENT,post_content VARCHAR(500),CONSTRAINT fk_User FOREIGN KEY(user_id) REFERENCES User(user_id) ON DELETE CASCADE);PRAGMA foreign_keys=on;"
+Q3="INSERT INTO User VALUES(1,'tony','stark','new york',1234567890);"
+Q4="INSERT INTO User VALUES(2,'john','wick','la',987654321);"
+Q5="INSERT INTO Post VALUES(1,NULL,'my first post');"
+Q6="SELECT "

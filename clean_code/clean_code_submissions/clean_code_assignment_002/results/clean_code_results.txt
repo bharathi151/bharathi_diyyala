@@ -1,0 +1,134 @@
+************* Module tests.test_car_apply_brakes
+tests/test_car_apply_brakes.py:33: [C0301(line-too-long), ] Line too long (96/79)
+tests/test_car_apply_brakes.py:49: [C0301(line-too-long), ] Line too long (96/79)
+tests/test_car_apply_brakes.py:66: [C0301(line-too-long), ] Line too long (90/79)
+************* Module tests.test_car_start_engine
+tests/test_car_start_engine.py:12: [C0301(line-too-long), ] Line too long (88/79)
+************* Module tests.test_truck_init
+tests/test_truck_init.py:11: [C0301(line-too-long), ] Line too long (80/79)
+tests/test_truck_init.py:12: [C0301(line-too-long), ] Line too long (84/79)
+tests/test_truck_init.py:32: [C0301(line-too-long), ] Line too long (82/79)
+tests/test_truck_init.py:33: [C0301(line-too-long), ] Line too long (83/79)
+tests/test_truck_init.py:34: [C0301(line-too-long), ] Line too long (87/79)
+tests/test_truck_init.py:53: [C0301(line-too-long), ] Line too long (80/79)
+tests/test_truck_init.py:54: [C0301(line-too-long), ] Line too long (83/79)
+tests/test_truck_init.py:55: [C0301(line-too-long), ] Line too long (84/79)
+tests/test_truck_init.py:56: [C0301(line-too-long), ] Line too long (88/79)
+tests/test_truck_init.py:76: [C0301(line-too-long), ] Line too long (82/79)
+tests/test_truck_init.py:77: [C0301(line-too-long), ] Line too long (83/79)
+tests/test_truck_init.py:78: [C0301(line-too-long), ] Line too long (87/79)
+tests/test_truck_init.py:118: [C0301(line-too-long), ] Line too long (81/79)
+tests/test_truck_init.py:119: [C0301(line-too-long), ] Line too long (85/79)
+tests/test_truck_init.py:120: [C0301(line-too-long), ] Line too long (88/79)
+tests/test_truck_init.py:121: [C0301(line-too-long), ] Line too long (89/79)
+tests/test_truck_init.py:122: [C0301(line-too-long), ] Line too long (93/79)
+************* Module tests.test_truck_encapsulation
+tests/test_truck_encapsulation.py:57: [C0301(line-too-long), ] Line too long (80/79)
+************* Module tests.test_truck_unload
+tests/test_truck_unload.py:20: [C0301(line-too-long), ] Line too long (80/79)
+tests/test_truck_unload.py:36: [C0301(line-too-long), ] Line too long (93/79)
+tests/test_truck_unload.py:52: [C0301(line-too-long), ] Line too long (82/79)
+************* Module tests.test_car_init
+tests/test_car_init.py:11: [C0301(line-too-long), ] Line too long (81/79)
+tests/test_car_init.py:31: [C0301(line-too-long), ] Line too long (82/79)
+tests/test_car_init.py:32: [C0301(line-too-long), ] Line too long (84/79)
+tests/test_car_init.py:50: [C0301(line-too-long), ] Line too long (80/79)
+tests/test_car_init.py:51: [C0330(bad-continuation), ] Wrong continued indentation (add 4 spaces).
+                                                                      max_speed,
+                                                                      ^   |
+tests/test_car_init.py:51: [C0301(line-too-long), ] Line too long (80/79)
+tests/test_car_init.py:52: [C0330(bad-continuation), ] Wrong continued indentation (add 4 spaces).
+                                                                      acceleration,
+                                                                      ^   |
+tests/test_car_init.py:52: [C0301(line-too-long), ] Line too long (83/79)
+tests/test_car_init.py:53: [C0330(bad-continuation), ] Wrong continued indentation (add 4 spaces).
+                                                                      tyre_friction):
+                                                                      ^   |
+tests/test_car_init.py:53: [C0301(line-too-long), ] Line too long (85/79)
+tests/test_car_init.py:72: [C0330(bad-continuation), ] Wrong continued indentation (add 4 spaces).
+                                                              max_speed,
+                                                              ^   |
+tests/test_car_init.py:73: [C0330(bad-continuation), ] Wrong continued indentation (add 4 spaces).
+                                                              acceleration,
+                                                              ^   |
+tests/test_car_init.py:74: [C0330(bad-continuation), ] Wrong continued indentation (add 4 spaces).
+                                                              tyre_friction):
+                                                              ^   |
+tests/test_car_init.py:95: [C0301(line-too-long), ] Line too long (83/79)
+tests/test_car_init.py:96: [C0330(bad-continuation), ] Wrong continued indentation (add 4 spaces).
+                                                                         max_speed,
+                                                                         ^   |
+tests/test_car_init.py:96: [C0301(line-too-long), ] Line too long (83/79)
+tests/test_car_init.py:97: [C0330(bad-continuation), ] Wrong continued indentation (add 4 spaces).
+                                                                         acceleration,
+                                                                         ^   |
+tests/test_car_init.py:97: [C0301(line-too-long), ] Line too long (86/79)
+tests/test_car_init.py:98: [C0330(bad-continuation), ] Wrong continued indentation (add 4 spaces).
+                                                                         tyre_friction):
+                                                                         ^   |
+tests/test_car_init.py:98: [C0301(line-too-long), ] Line too long (88/79)
+************* Module tests.test_race_car_sound_horn
+tests/test_race_car_sound_horn.py:1: [C0301(line-too-long), ] Line too long (81/79)
+************* Module tests.test_truck_apply_brakes
+tests/test_truck_apply_brakes.py:16: [C0301(line-too-long), ] Line too long (96/79)
+tests/test_truck_apply_brakes.py:35: [C0301(line-too-long), ] Line too long (96/79)
+tests/test_truck_apply_brakes.py:55: [C0301(line-too-long), ] Line too long (90/79)
+************* Module tests.test_truck_start_engine
+tests/test_truck_start_engine.py:12: [C0301(line-too-long), ] Line too long (91/79)
+************* Module tests.test_car_accelerate
+tests/test_car_accelerate.py:19: [C0301(line-too-long), ] Line too long (92/79)
+tests/test_car_accelerate.py:35: [C0301(line-too-long), ] Line too long (97/79)
+tests/test_car_accelerate.py:52: [C0301(line-too-long), ] Line too long (90/79)
+************* Module tests.test_race_car_stop_engine
+tests/test_race_car_stop_engine.py:1: [C0301(line-too-long), ] Line too long (87/79)
+tests/test_race_car_stop_engine.py:10: [C0301(line-too-long), ] Line too long (83/79)
+************* Module tests.test_truck_stop_engine
+tests/test_truck_stop_engine.py:1: [C0301(line-too-long), ] Line too long (86/79)
+tests/test_truck_stop_engine.py:13: [C0301(line-too-long), ] Line too long (82/79)
+************* Module tests.test_race_car_accelerate
+tests/test_race_car_accelerate.py:16: [C0301(line-too-long), ] Line too long (104/79)
+tests/test_race_car_accelerate.py:29: [C0303(trailing-whitespace), ] Trailing whitespace
+tests/test_race_car_accelerate.py:30: [C0301(line-too-long), ] Line too long (97/79)
+tests/test_race_car_accelerate.py:46: [C0301(line-too-long), ] Line too long (102/79)
+tests/test_race_car_accelerate.py:61: [C0301(line-too-long), ] Line too long (89/79)
+tests/test_race_car_accelerate.py:83: [C0301(line-too-long), ] Line too long (89/79)
+************* Module tests.test_car_stop_engine
+tests/test_car_stop_engine.py:1: [C0301(line-too-long), ] Line too long (82/79)
+************* Module tests.tets_race_car_apply_brakes
+tests/tets_race_car_apply_brakes.py:34: [C0301(line-too-long), ] Line too long (101/79)
+tests/tets_race_car_apply_brakes.py:52: [C0301(line-too-long), ] Line too long (108/79)
+tests/tets_race_car_apply_brakes.py:66: [C0301(line-too-long), ] Line too long (108/79)
+tests/tets_race_car_apply_brakes.py:81: [C0301(line-too-long), ] Line too long (102/79)
+************* Module tests.test_truck_accelerate
+tests/test_truck_accelerate.py:16: [C0301(line-too-long), ] Line too long (107/79)
+tests/test_truck_accelerate.py:36: [C0301(line-too-long), ] Line too long (97/79)
+tests/test_truck_accelerate.py:56: [C0301(line-too-long), ] Line too long (90/79)
+************* Module tests.test_race_car_start_engine
+tests/test_race_car_start_engine.py:10: [C0301(line-too-long), ] Line too long (94/79)
+************* Module tests.test_race_car_init
+tests/test_race_car_init.py:8: [C0301(line-too-long), ] Line too long (81/79)
+tests/test_race_car_init.py:9: [C0301(line-too-long), ] Line too long (85/79)
+tests/test_race_car_init.py:10: [C0301(line-too-long), ] Line too long (88/79)
+tests/test_race_car_init.py:11: [C0301(line-too-long), ] Line too long (90/79)
+tests/test_race_car_init.py:28: [C0301(line-too-long), ] Line too long (84/79)
+tests/test_race_car_init.py:29: [C0301(line-too-long), ] Line too long (88/79)
+tests/test_race_car_init.py:30: [C0301(line-too-long), ] Line too long (91/79)
+tests/test_race_car_init.py:31: [C0301(line-too-long), ] Line too long (93/79)
+tests/test_race_car_init.py:36: [C0301(line-too-long), ] Line too long (80/79)
+tests/test_race_car_init.py:48: [C0301(line-too-long), ] Line too long (85/79)
+tests/test_race_car_init.py:49: [C0301(line-too-long), ] Line too long (89/79)
+tests/test_race_car_init.py:50: [C0301(line-too-long), ] Line too long (92/79)
+tests/test_race_car_init.py:51: [C0301(line-too-long), ] Line too long (94/79)
+tests/test_race_car_init.py:56: [C0301(line-too-long), ] Line too long (80/79)
+tests/test_race_car_init.py:68: [C0301(line-too-long), ] Line too long (82/79)
+tests/test_race_car_init.py:69: [C0301(line-too-long), ] Line too long (86/79)
+tests/test_race_car_init.py:70: [C0301(line-too-long), ] Line too long (89/79)
+tests/test_race_car_init.py:71: [C0301(line-too-long), ] Line too long (91/79)
+tests/test_race_car_init.py:93: [C0301(line-too-long), ] Line too long (93/79)
+tests/test_race_car_init.py:94: [C0301(line-too-long), ] Line too long (97/79)
+tests/test_race_car_init.py:95: [C0301(line-too-long), ] Line too long (100/79)
+tests/test_race_car_init.py:96: [C0301(line-too-long), ] Line too long (102/79)
+
+------------------------------------------------------------------
+Your code has been rated at 8.86/10 (previous run: 9.20/10, -0.34)
+

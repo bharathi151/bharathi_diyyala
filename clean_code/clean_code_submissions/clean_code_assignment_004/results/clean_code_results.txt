@@ -1,0 +1,8 @@
+************* Module fb_post/constants
+fb_post/constants.py:1: [C0103(invalid-name), ] Module name "fb_post/constants" doesn't conform to snake_case naming style
+************* Module fb_post/exceptions
+fb_post/exceptions.py:1: [C0103(invalid-name), ] Module name "fb_post/exceptions" doesn't conform to snake_case naming style
+
+------------------------------------------------------------------
+Your code has been rated at 9.93/10 (previous run: 9.78/10, +0.15)
+

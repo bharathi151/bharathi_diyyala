@@ -1,0 +1,10 @@
+Tests ran at _27_Feb_10_16_AM
+
+6 tests passed out of 6 tests.
+
+test_db003.py::test_q1: passed
+test_db003.py::test_q2: passed
+test_db003.py::test_q3: passed
+test_db003.py::test_q4: passed
+test_db003.py::test_q5: passed
+test_db003.py::test_q6: passed
